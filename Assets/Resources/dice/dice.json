@@ -1,0 +1,72 @@
+{
+  "items": [
+    {
+      "name": "d8c",
+      "used": 0,
+      "type": "character",
+      "sides": [
+        "blank",
+        "opportunity",
+        "opportunity",
+        "opportunity opportunity",
+        "success",
+        "success",
+        "success",
+        "success success"
+      ]
+    },
+    {
+      "name": "d8e",
+      "used": 0,
+      "type": "encounter",
+      "sides": [
+        "blank",
+        "threat",
+        "threat",
+        "threat threat",
+        "failure",
+        "failure",
+        "failure",
+        "failure failure"
+      ]
+    },
+    {
+      "name": "d6c",
+      "used": 1,
+      "type": "character",
+      "sides": [
+        "blank",
+        "opportunity",
+        "opportunity",
+        "success opportunity",
+        "success",
+        "success"
+      ]
+    },
+    {
+      "name": "d6e",
+      "used": 1,
+      "type": "encounter",
+      "sides": [
+        "blank",
+        "threat",
+        "threat",
+        "threat threat",
+        "failure",
+        "failure"
+      ]
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+

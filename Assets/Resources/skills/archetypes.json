@@ -1,0 +1,66 @@
+{
+  "items": [
+    {
+      "name": "Athletics",
+      "used": 1,
+      "passive": 1
+    },
+    {
+      "name": "Will",
+      "used": 1,
+      "passive": 1
+    },
+    {
+      "name": "Scout",
+      "used": 1,
+      "passive": 0
+    },
+    {
+      "name": "Shadow",
+      "used": 1,
+      "passive": 0
+    },
+    {
+      "name": "Forager",
+      "used": 1,
+      "passive": 0
+    },
+    {
+      "name": "Fighter",
+      "used": 1,
+      "passive": 0
+    },
+    {
+      "name": "Criminal",
+      "used": 0,
+      "passive": 0
+    },
+    {
+      "name": "Envoy",
+      "used": 1,
+      "passive": 0
+    },
+    {
+      "name": "Scholar",
+      "used": 1,
+      "passive": 0
+    },
+    {
+      "name": "Tinkerer",
+      "used": 0,
+      "passive": 0
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+

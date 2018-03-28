@@ -1,0 +1,54 @@
+{
+  "items": [
+    {
+      "name": "Mountaineer",
+      "parentSkill": "Pathfinder",
+      "passive": 1,
+      "skillBonus": 2,
+      "currentHexTags": "",
+      "targetHexTags": "high",
+      "actionCharacterTags": "",
+      "targetCharacterTags": ""
+    },
+    {
+      "name": "Swamp tracker",
+      "parentSkill": "Pathfinder",
+      "passive": 1,
+      "skillBonus": 2,
+      "currentHexTags": "",
+      "targetHexTags": "swampy",
+      "actionCharacterTags": "",
+      "targetCharacterTags": ""
+    },
+    {
+      "name": "Desert nomad",
+      "parentSkill": "Pathfinder",
+      "passive": 1,
+      "skillBonus": 2,
+      "currentHexTags": "",
+      "targetHexTags": "desertlike",
+      "actionCharacterTags": "",
+      "targetCharacterTags": ""
+    },
+    {
+      "name": "Forester",
+      "parentSkill": "Pathfinder",
+      "passive": 1,
+      "skillBonus": 2,
+      "currentHexTags": "",
+      "targetHexTags": "denseVegetation",
+      "actionCharacterTags": "",
+      "targetCharacterTags": ""
+    },
+    {
+      "name": "Snow guide",
+      "parentSkill": "Pathfinder",
+      "passive": 1,
+      "skillBonus": 2,
+      "currentHexTags": "",
+      "targetHexTags": "snowy",
+      "actionCharacterTags": "",
+      "targetCharacterTags": ""
+    }
+  ]
+}

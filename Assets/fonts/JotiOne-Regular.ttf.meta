@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 9da313e3355a1d34aa4d765231f771e2
+timeCreated: 1516114526
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Joti One
+  fontNames:
+  - Joti One
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

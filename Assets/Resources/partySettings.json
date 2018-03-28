@@ -1,0 +1,29 @@
+{
+  "maxPartyMembers": 6,
+  "maxActiveArchetypes": 4,
+  "archetypeLevelCap": 4,
+  "startingArchetypePoints": 12,
+  "minPassiveReserve": 4,
+  "maxPassiveReserve": 4,
+  "skillPromotionChance": 100,
+  "maxPromotedSkills": 2,
+  "maxPromotionBonus": 2,
+  "archetypeDrop": 1,
+  "dropValue": 1,
+  "abilityChance": 30,
+  "maxAbilities": 2,
+  "minimalMovement": 1,
+  "movementPenalty": [
+    {
+      "hexTags": "desert elevated denseVegetation",
+      "penalty": 2
+    },
+    {
+      "hexTags": "snow swampy high",
+      "penalty": 3
+    }
+  ],
+  "dayTime": 8,
+  "nightTime": 8,
+  "decisionCost": 3
+}

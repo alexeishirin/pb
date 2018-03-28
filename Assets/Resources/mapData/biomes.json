@@ -1,0 +1,329 @@
+{
+  "items":[
+    {
+      "name": "Alpine barren",
+      "active": true,
+      "caption": "Alpine barren",
+      "descriptions": [
+        "",
+        ""
+      ],
+      "actionDescriptions": [
+        "",
+        ""
+      ],
+      "criticalResourceMinimumAmount": 0,
+      "criticalResourceMaximumAmount": 100,
+      "requiredTerrain": "high",
+      "requiredClimate": "any",
+      "requiredHexTags": "",
+      "rejectingHexTags": "",
+      "requiredAdjacentHexTags": "",
+      "rejectingAdjacentHexTags": "",
+      "tags": "",
+      "poi": "",
+      "overlayObjects": ""
+    },
+    {
+      "name": "Cold desert",
+      "active": true,
+      "caption": "Cold desert",
+      "descriptions": [
+        "",
+        ""
+      ],
+      "actionDescriptions": [
+        "",
+        ""
+      ],
+      "criticalResourceMinimumAmount": 5,
+      "criticalResourceMaximumAmount": 30,
+      "requiredTerrain": "low normal elevated high",
+      "requiredClimate": "cool cold",
+      "requiredHexTags": "",
+      "rejectingHexTags": "CR CRadj",
+      "requiredAdjacentHexTags": "",
+      "rejectingAdjacentHexTags": "",
+      "tags": "",
+      "poi": "",
+      "overlayObjects": ""
+    },
+    {
+      "name": "Moss bog",
+      "active": true,
+      "caption": "Moss bog",
+      "descriptions": [
+        "",
+        ""
+      ],
+      "actionDescriptions": [
+        "",
+        ""
+      ],
+      "criticalResourceMinimumAmount": 10,
+      "criticalResourceMaximumAmount": 100,
+      "requiredTerrain": "low normal",
+      "requiredClimate": "cool cold",
+      "requiredHexTags": "CR CRadj",
+      "rejectingHexTags": "",
+      "requiredAdjacentHexTags": "",
+      "rejectingAdjacentHexTags": "",
+      "tags": "",
+      "poi": "",
+      "overlayObjects": ""
+    },
+    {
+      "name": "Fresh lake",
+      "active": true,
+      "caption": "Fresh lake",
+      "descriptions": [
+        "",
+        ""
+      ],
+      "actionDescriptions": [
+        "",
+        ""
+      ],
+      "criticalResourceMinimumAmount": 10,
+      "criticalResourceMaximumAmount": 100,
+      "requiredTerrain": "low normal",
+      "requiredClimate": "cold cool temperate warm hot",
+      "requiredHexTags": "CR",
+      "rejectingHexTags": "",
+      "requiredAdjacentHexTags": "",
+      "rejectingAdjacentHexTags": "",
+      "tags": "",
+      "poi": "",
+      "overlayObjects": ""
+    },
+    {
+      "name": "Grassland",
+      "active": true,
+      "caption": "Grassland",
+      "descriptions": [
+        "",
+        ""
+      ],
+      "actionDescriptions": [
+        "",
+        ""
+      ],
+      "criticalResourceMinimumAmount": 15,
+      "criticalResourceMaximumAmount": 100,
+      "requiredTerrain": "low normal elevated high",
+      "requiredClimate": "temperate warm",
+      "requiredHexTags": "",
+      "rejectingHexTags": "",
+      "requiredAdjacentHexTags": "",
+      "rejectingAdjacentHexTags": "",
+      "tags": "",
+      "poi": "",
+      "overlayObjects": ""
+    },
+    {
+      "name": "Hot desert",
+      "active": true,
+      "caption": "Hot desert",
+      "descriptions": [
+        "",
+        ""
+      ],
+      "actionDescriptions": [
+        "",
+        ""
+      ],
+      "criticalResourceMinimumAmount": 5,
+      "criticalResourceMaximumAmount": 30,
+      "requiredTerrain": "low normal elevated high",
+      "requiredClimate": "warm hot",
+      "requiredHexTags": "",
+      "rejectingHexTags": "CR CRadj",
+      "requiredAdjacentHexTags": "",
+      "rejectingAdjacentHexTags": "",
+      "tags": "",
+      "poi": "",
+      "overlayObjects": ""
+    },
+    {
+      "name": "Salt lake",
+      "active": true,
+      "caption": "Salt lake",
+      "descriptions": [
+        "",
+        ""
+      ],
+      "actionDescriptions": [
+        "",
+        ""
+      ],
+      "criticalResourceMinimumAmount": 10,
+      "criticalResourceMaximumAmount": 100,
+      "requiredTerrain": "low normal",
+      "requiredClimate": "warm hot",
+      "requiredHexTags": "CR",
+      "rejectingHexTags": "",
+      "requiredAdjacentHexTags": "",
+      "rejectingAdjacentHexTags": "",
+      "tags": "",
+      "poi": "",
+      "overlayObjects": ""
+    },
+    {
+      "name": "Savanna grassland",
+      "active": true,
+      "caption": "Savanna grassland",
+      "descriptions": [
+        "",
+        ""
+      ],
+      "actionDescriptions": [
+        "",
+        ""
+      ],
+      "criticalResourceMinimumAmount": 5,
+      "criticalResourceMaximumAmount": 30,
+      "requiredTerrain": "low normal elevated high",
+      "requiredClimate": "warm hot",
+      "requiredHexTags": "",
+      "rejectingHexTags": "",
+      "requiredAdjacentHexTags": "",
+      "rejectingAdjacentHexTags": "",
+      "tags": "",
+      "poi": "",
+      "overlayObjects": ""
+    },
+    {
+      "name": "Marsh",
+      "active": true,
+      "caption": "Marsh",
+      "descriptions": [
+        "",
+        ""
+      ],
+      "actionDescriptions": [
+        "",
+        ""
+      ],
+      "criticalResourceMinimumAmount": 10,
+      "criticalResourceMaximumAmount": 100,
+      "requiredTerrain": "low normal",
+      "requiredClimate": "temperate warm hot",
+      "requiredHexTags": "CR CRadj",
+      "rejectingHexTags": "",
+      "requiredAdjacentHexTags": "",
+      "rejectingAdjacentHexTags": "",
+      "tags": "",
+      "poi": "",
+      "overlayObjects": ""
+    },
+    {
+      "name": "Scrubland",
+      "active": true,
+      "caption": "Scrubland",
+      "descriptions": [
+        "",
+        ""
+      ],
+      "actionDescriptions": [
+        "",
+        ""
+      ],
+      "criticalResourceMinimumAmount": 5,
+      "criticalResourceMaximumAmount": 50,
+      "requiredTerrain": "low normal elevated high",
+      "requiredClimate": "warm hot",
+      "requiredHexTags": "",
+      "rejectingHexTags": "",
+      "requiredAdjacentHexTags": "",
+      "rejectingAdjacentHexTags": "",
+      "tags": "",
+      "poi": "",
+      "overlayObjects": ""
+    },
+    {
+      "name": "Tropical rainforest",
+      "active": true,
+      "caption": "",
+      "descriptions": [
+        "",
+        ""
+      ],
+      "actionDescriptions": [
+        "",
+        ""
+      ],
+      "criticalResourceMinimumAmount": 30,
+      "criticalResourceMaximumAmount": 100,
+      "requiredTerrain": "low normal elevated high",
+      "requiredClimate": "hot",
+      "requiredHexTags": "",
+      "rejectingHexTags": "",
+      "requiredAdjacentHexTags": "",
+      "rejectingAdjacentHexTags": "",
+      "tags": "",
+      "poi": "",
+      "overlayObjects": ""
+    },
+    {
+      "name": "Tundra",
+      "active": true,
+      "caption": "",
+      "descriptions": [
+        "",
+        ""
+      ],
+      "actionDescriptions": [
+        "",
+        ""
+      ],
+      "criticalResourceMinimumAmount": 5,
+      "criticalResourceMaximumAmount": 100,
+      "requiredTerrain": "low normal elevated high",
+      "requiredClimate": "cool cold",
+      "requiredHexTags": "",
+      "rejectingHexTags": "",
+      "requiredAdjacentHexTags": "",
+      "rejectingAdjacentHexTags": "",
+      "tags": "",
+      "poi": "",
+      "overlayObjects": ""
+    },
+    {
+      "name": "Volcanic desert",
+      "active": true,
+      "caption": "",
+      "descriptions": [
+        "",
+        ""
+      ],
+      "actionDescriptions": [
+        "",
+        ""
+      ],
+      "criticalResourceMinimumAmount": 5,
+      "criticalResourceMaximumAmount": 100,
+      "requiredTerrain": "low normal elevated high",
+      "requiredClimate": "any",
+      "requiredHexTags": "",
+      "rejectingHexTags": "",
+      "requiredAdjacentHexTags": "high",
+      "rejectingAdjacentHexTags": "",
+      "tags": "",
+      "poi": "",
+      "overlayObjects": ""
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

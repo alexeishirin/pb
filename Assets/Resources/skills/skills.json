@@ -1,0 +1,106 @@
+{
+  "items": [
+    {
+      "name": "Pathfinder",
+      "used": 1,
+      "action": "move",
+      "parent": "Scout"
+    },
+    {
+      "name": "Spot",
+      "used": 1,
+      "action": "uncover aspect",
+      "parent": "Scout"
+    },
+    {
+      "name": "Explore",
+      "used": 1,
+      "action": "uncover encounter",
+      "parent": "Scout"
+    },
+    {
+      "name": "Forage",
+      "used": 1,
+      "action": "forage",
+      "parent": "Forager"
+    },
+    {
+      "name": "Hunt",
+      "used": 1,
+      "action": "hunt",
+      "parent": "Forager"
+    },
+    {
+      "name": "Melee",
+      "used": 1,
+      "action": "melee",
+      "parent": "Fighter"
+    },
+    {
+      "name": "Ranged",
+      "used": 1,
+      "action": "ranged",
+      "parent": "Fighter"
+    },
+    {
+      "name": "Defense",
+      "used": 1,
+      "action": "defend",
+      "parent": "Fighter"
+    },
+    {
+      "name": "Stealth",
+      "used": 1,
+      "action": "sneak",
+      "parent": "Shadow"
+    },
+    {
+      "name": "Diplomacy",
+      "used": 1,
+      "action": "talk",
+      "parent": "Envoy"
+    },
+    {
+      "name": "Lore",
+      "used": 1,
+      "action": "lore",
+      "parent": "Scholar"
+    },
+    {
+      "name": "Science",
+      "used": 1,
+      "action": "science",
+      "parent": "Scholar"
+    },
+    {
+      "name": "Hit points",
+      "used": 1,
+      "action": "HP",
+      "parent": "Athletics"
+    },
+    {
+      "name": "Carrying capacity",
+      "used": 1,
+      "action": "carry",
+      "parent": "Athletics"
+    },
+    {
+      "name": "Morale",
+      "used": 1,
+      "action": "morale",
+      "parent": "Will"
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
