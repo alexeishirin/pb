@@ -53,8 +53,8 @@ public class MeshMapController : MonoBehaviour {
 
   void Update() {
     if (mesh != null) {
-      animateWater();
-      mesh.RecalculateNormals();
+      //animateWater();
+      //mesh.RecalculateNormals();
     }
   }
 
@@ -110,6 +110,7 @@ public class MeshMapController : MonoBehaviour {
 
   public void drawMap() {
     initGertsnerWaves();
+    drawRivers();
     this.vertices = new List<Vector3>();
     this.triangles = new List<int>();
     this.colours = new List<Color32>();
@@ -220,30 +221,14 @@ public class MeshMapController : MonoBehaviour {
     this.initialVertices = this.vertices.ToArray();
   }
 
-  void generateRivers(Polygon polygon) {
-    Hex randomMountainHex = this.map.hexes.Find(hex => hex.terrainType == TerrainType.HIGH);
-    float hexSize = this.getHexSize();
-    float riverZ = -1;
-    float perlinNoiseX = 15.004f;
-    float perlinNoiseStep = 0.6f;
-    for (int i = 0; i < this.map.hexes.Count - 1; i++) {
-      Vector2 firstRiverPoint = this.getHexRiverPoint(this.map.hexes[i], hexSize);
-      Vector2 secondRiverPoint = this.getHexRiverPoint(this.map.hexes[i + 1], hexSize);
-      Vector2 direction = secondRiverPoint - firstRiverPoint;
-      Vector2 normal = new Vector2(-direction.y, direction.x).normalized;
-      int pointsNumber = Mathf.CeilToInt(direction.magnitude / riverDensity);
-
-      for (int pointIndex = 0; pointIndex < pointsNumber; pointIndex++) {
-        float t = pointIndex * 1.0f / pointsNumber;
-        Vector2 newPoint = Vector2.Lerp(firstRiverPoint, secondRiverPoint, t);
-        float shift = Mathf.PerlinNoise(perlinNoiseX, this.riverPoints.Count * perlinNoiseStep) * 0.4f - 0.2f;
-        newPoint += normal * shift;
-        this.riverPoints.Add(new Vector3(newPoint.x, newPoint.y, riverZ));
-      }
-    }
+  void drawRivers() {
+    List<List<Hex>> rivers = RiverHelper.generateRivers(map);
+    Debug.Log(rivers.Count);
+    this.riverPoints = RiverHelper.getRiversMesh(rivers, this.riverDensity, this.getHexSize());
+    Debug.Log(this.riverPoints.Count);
   }
 
-  private Vector2 getHexRiverPoint (Hex hex, float hexSize) {
+  private Vector2 getHexRiverPoint(Hex hex, float hexSize) {
     Vector2 hexCenter = HexMathHelper.hexToWorldCoords(new Vector2(hex.x, hex.y), hexSize);
 
     return new Vector2(hexCenter.x + hex.riverPoint.x * hexSize, hexCenter.y + hex.riverPoint.y * hexSize);
@@ -251,18 +236,20 @@ public class MeshMapController : MonoBehaviour {
 
   public void OnDrawGizmos() {
     Gizmos.color = Color.red;
-    for (int i = 0; i < this.riverPoints.Count - 1; i++) {
+    for (int i = 0; i < this.riverPoints.Count; i++) {
       Gizmos.DrawSphere(this.riverPoints[i], 0.01f);
-      Gizmos.DrawSphere(this.riverPoints[i + 1], 0.01f);
-      Gizmos.DrawLine(this.riverPoints[i], this.riverPoints[i + 1]);
+      //Gizmos.DrawSphere(this.riverPoints[i + 1], 0.01f);
+      //Gizmos.DrawLine(this.riverPoints[i], this.riverPoints[i + 1]);
     }
+    Gizmos.color = Color.green;
+    Gizmos.DrawSphere(this.riverPoints[0], 0.01f);
 
+    Gizmos.color = Color.blue;
+    Gizmos.DrawSphere(this.riverPoints[this.riverPoints.Count - 1], 0.01f);
   }
 
   public TriangleNet.Mesh triangulateMap() {
     Polygon polygon = new Polygon();
-
-    generateRivers(polygon);
 
     polygon.Add(new Vertex(left, bottom));
     for (float y = bottom; y <= top;) {
