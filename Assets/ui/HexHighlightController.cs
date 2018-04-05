@@ -16,6 +16,10 @@ public class HexHighlightController : MonoBehaviour, IPointerClickHandler
     this.movementCostText.text = movementCost.ToString();
   }
 
+  public void showHexCoordinates(string text) {
+    this.movementCostText.text = text;
+  }
+
   public void highlightHex(Vector2 hexCoordinates)
   {
     float hexSize = MeshMapController.getInstance().getHexSize();
@@ -23,7 +27,8 @@ public class HexHighlightController : MonoBehaviour, IPointerClickHandler
     this.transform.position = new Vector3(newHighlightPosition.x, newHighlightPosition.y, this.transform.position.z);
     this.gameObject.SetActive(true);
     int movementCost = PartyController.getInstance().calculateMovementCost(hexCoordinates);
-    this.showMovementCost(movementCost);
+    //this.showMovementCost(movementCost);
+    this.showHexCoordinates("x:" + hexCoordinates.x + ", y:" + hexCoordinates.y);
 
     this.movementCost = movementCost;
     this.movementTarget = hexCoordinates;

@@ -12,6 +12,9 @@ public class MeshMapController : MonoBehaviour {
   public Texture2D mountainHeightmap;
   public Texture2D elevatedHeightmap;
 
+  public GameObject ocean;
+  public GameObject rivers;
+
   public System.Random randomGenerator;
 
   public int specifiedMapSeed = 0;
@@ -45,8 +48,8 @@ public class MeshMapController : MonoBehaviour {
 
   private float polygonDensity = 0.2f * 1f;
 
-  private List<Vector3> riverPoints = new List<Vector3>();
-  private float riverDensity = 0.05f;
+  private List<List<Vector2>> riverPoints = new List<List<Vector2>>();
+  private float riverDensity = 0.15f;
 
   void Start() {
   }
@@ -109,8 +112,9 @@ public class MeshMapController : MonoBehaviour {
   }
 
   public void drawMap() {
+    float heightSeed = Random.Range(0, 100);
+
     initGertsnerWaves();
-    drawRivers();
     this.vertices = new List<Vector3>();
     this.triangles = new List<int>();
     this.colours = new List<Color32>();
@@ -119,10 +123,14 @@ public class MeshMapController : MonoBehaviour {
     this.shoreIndices = new List<int>();
     this.initialHeights = new List<float>();
 
+    List<Vector3> oceanVertices = new List<Vector3>();
+    List<Vector3> riverVertices = new List<Vector3>();
+
     calculateMapBounds();
 
+    drawRivers(heightSeed);
+
     TriangleNet.Mesh mapTriangulation = triangulateMap();
-    float heightSeed = Random.Range(0, 100);
 
     foreach (Triangle triangle in mapTriangulation.Triangles) {
       int vertexIndex = this.vertices.Count;
@@ -138,14 +146,16 @@ public class MeshMapController : MonoBehaviour {
       Vector3 underwaterShift2 = new Vector3(0, 0);
       Vector3 underwaterShift3 = new Vector3(0, 0);
 
+      Color resultTriangleColor = ColourHelper.WATER_COLOUR;
+
       if (triangleColor == triangleColor2 && triangleColor == triangleColor3) {
-        this.colours.Add(triangleColor);
-        this.colours.Add(triangleColor);
-        this.colours.Add(triangleColor);
+        resultTriangleColor = triangleColor;
       } else if (ColourHelper.isWaterColor(triangleColor) || ColourHelper.isWaterColor(triangleColor2) || ColourHelper.isWaterColor(triangleColor3)) {
-        this.colours.Add(Color.yellow);
-        this.colours.Add(Color.yellow);
-        this.colours.Add(Color.yellow);
+        if (vertex1.hex == null || vertex2.hex == null || vertex3.hex == null) {
+          resultTriangleColor = Color.yellow;
+        } else {
+          resultTriangleColor = new Color32(70, 100, 0, 255);
+        }
 
         Hex shoreHex = vertex1.hex != null && (vertex1.hex.biome == null || vertex1.hex.biome.name != "Fresh lake") ?
           vertex1.hex : vertex2.hex != null && (vertex2.hex.biome == null || vertex2.hex.biome.name != "Fresh lake") ? vertex2.hex : vertex3.hex;
@@ -164,7 +174,7 @@ public class MeshMapController : MonoBehaviour {
           shoreIndices.Add(vertexIndex + 2);
         }
 
-        if (vertex1.hex != null && vertex1.hex.biome != null && vertex1.hex.biome.name == "Fresh lake") {
+        /*if (vertex1.hex != null && vertex1.hex.biome != null && vertex1.hex.biome.name == "Fresh lake") {
           underwaterShift1 = (new Vector2((float)vertex1.x, (float)vertex1.y) - shoreCenter).normalized * 0.1f;
           shoreIndices.Add(vertexIndex);
         }
@@ -175,7 +185,7 @@ public class MeshMapController : MonoBehaviour {
         if (vertex3.hex != null && vertex3.hex.biome != null && vertex3.hex.biome.name == "Fresh lake") {
           underwaterShift3 = (new Vector2((float)vertex3.x, (float)vertex3.y) - shoreCenter).normalized * 0.1f;
           shoreIndices.Add(vertexIndex + 2);
-        }
+        }*/
       } else {
         Hex rarestHex = vertex1.hex;
         if (ColourHelper.biomeRarity(rarestHex) < ColourHelper.biomeRarity(vertex2.hex)) {
@@ -187,26 +197,63 @@ public class MeshMapController : MonoBehaviour {
         }
 
         Color32 resultColour = ColourHelper.getHexColor(rarestHex);
-        this.colours.Add(resultColour);
-        this.colours.Add(resultColour);
-        this.colours.Add(resultColour);
+        resultTriangleColor = resultColour;
       }
 
-      float height1 = TerrainHelper.getHeight(heightSeed, vertex1.toVector3(), vertex1.hex, this.getHexSize(), elevatedHeightmap, mountainHeightmap);
-      float height2 = TerrainHelper.getHeight(heightSeed, vertex2.toVector3(), vertex2.hex, this.getHexSize(), elevatedHeightmap, mountainHeightmap);
-      float height3 = TerrainHelper.getHeight(heightSeed, vertex3.toVector3(), vertex3.hex, this.getHexSize(), elevatedHeightmap, mountainHeightmap);
+      float height1 = TerrainHelper.getHeight(heightSeed, vertex1, this.getHexSize(), elevatedHeightmap, mountainHeightmap);
+      float height2 = TerrainHelper.getHeight(heightSeed, vertex2, this.getHexSize(), elevatedHeightmap, mountainHeightmap);
+      float height3 = TerrainHelper.getHeight(heightSeed, vertex3, this.getHexSize(), elevatedHeightmap, mountainHeightmap);
 
-      this.vertices.Add(vertex1.toVector3() + underwaterShift1 + new Vector3(0, 0, height1));
-      this.vertices.Add(vertex2.toVector3() + underwaterShift2 + new Vector3(0, 0, height2));
-      this.vertices.Add(vertex3.toVector3() + underwaterShift3 + new Vector3(0, 0, height3));
+      Vector3 newVertex1 = vertex1.toVector3() + underwaterShift1 + new Vector3(0, 0, height1);
+      Vector3 newVertex2 = vertex2.toVector3() + underwaterShift2 + new Vector3(0, 0, height2);
+      Vector3 newVertex3 = vertex3.toVector3() + underwaterShift3 + new Vector3(0, 0, height3);
 
-      this.initialHeights.Add(height1);
-      this.initialHeights.Add(height2);
-      this.initialHeights.Add(height3);
+      if (vertex1.isRiver && (vertex1.hex == null || !vertex1.hex.hasTag(RiverHelper.FRESH_LAKE_TAG))) {
+        newVertex1 += TerrainHelper.getRiverHeightAdjustment(newVertex1);
+      }
 
-      this.triangles.Add(vertexIndex);
-      this.triangles.Add(vertexIndex + 1);
-      this.triangles.Add(vertexIndex + 2);
+      if (vertex2.isRiver && (vertex2.hex == null || !vertex2.hex.hasTag(RiverHelper.FRESH_LAKE_TAG))) {
+        newVertex2 += TerrainHelper.getRiverHeightAdjustment(newVertex2);
+      }
+
+      if (vertex3.isRiver && (vertex3.hex == null || !vertex3.hex.hasTag(RiverHelper.FRESH_LAKE_TAG))) {
+        newVertex3 += TerrainHelper.getRiverHeightAdjustment(newVertex3);
+      }
+
+      if (vertex1.hex == null && vertex2.hex == null && vertex3.hex == null) {
+        oceanVertices.Add(newVertex1);
+        oceanVertices.Add(newVertex2);
+        oceanVertices.Add(newVertex3);
+      } else if (vertex1.isRiver && vertex2.isRiver && vertex3.isRiver) {
+        riverVertices.Add(newVertex1);
+        riverVertices.Add(newVertex2);
+        riverVertices.Add(newVertex3);
+      } else {
+        this.vertices.Add(newVertex1);
+        this.vertices.Add(newVertex2);
+        this.vertices.Add(newVertex3);
+
+        float averageHeight = (newVertex1.z + newVertex2.z + newVertex3.z) / 3;
+        if (averageHeight <= -0.4) {
+          resultTriangleColor = Color.white;
+        }
+
+        this.colours.Add(resultTriangleColor);
+        this.colours.Add(resultTriangleColor);
+        this.colours.Add(resultTriangleColor);
+
+        this.triangles.Add(vertexIndex);
+        this.triangles.Add(vertexIndex + 1);
+        this.triangles.Add(vertexIndex + 2);
+      }
+    }
+
+    if (oceanVertices.Count > 0) {
+      this.createOceanMesh(oceanVertices);
+    }
+
+    if(riverVertices.Count > 0) {
+      this.createRiverMesh(riverVertices);
     }
 
 
@@ -221,11 +268,38 @@ public class MeshMapController : MonoBehaviour {
     this.initialVertices = this.vertices.ToArray();
   }
 
-  void drawRivers() {
-    List<List<Hex>> rivers = RiverHelper.generateRivers(map);
-    Debug.Log(rivers.Count);
-    this.riverPoints = RiverHelper.getRiversMesh(rivers, this.riverDensity, this.getHexSize());
-    Debug.Log(this.riverPoints.Count);
+  public void createRiverMesh (List<Vector3> vertices) {
+    UnityEngine.Mesh riverMesh = new UnityEngine.Mesh();
+    riverMesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
+    riverMesh.name = "Rivers";
+    riverMesh.vertices = vertices.ToArray();
+    riverMesh.triangles = simplestTriangles(vertices.Count);
+    riverMesh.colors32 = simplestColours(ColourHelper.WATER_COLOUR, vertices.Count);
+    riverMesh.RecalculateNormals();
+    riverMesh.RecalculateBounds();
+
+    rivers.GetComponent<MeshFilter>().mesh = riverMesh;
+  }
+
+  public void createOceanMesh(List<Vector3> vertices) {
+    UnityEngine.Mesh oceanMesh = new UnityEngine.Mesh();
+    oceanMesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
+    oceanMesh.name = "Ocean";
+    oceanMesh.vertices = vertices.ToArray();
+    oceanMesh.triangles = simplestTriangles(vertices.Count);
+    oceanMesh.colors32 = simplestColours(ColourHelper.WATER_COLOUR, vertices.Count);
+    oceanMesh.RecalculateNormals();
+    oceanMesh.RecalculateBounds();
+
+    ocean.GetComponent<MeshFilter>().mesh = oceanMesh;
+  }
+
+  void drawRivers(float heightSeed) {
+    List<List<Vector2>> rivers = RiverHelper.generateRivers(map, this.mapCenter);
+    this.riverPoints = RiverHelper.getRiverPoints(rivers, this.riverDensity, this.getHexSize(), this.map);
+    /*this.rivers.GetComponent<MeshFilter>().mesh = 
+      RiverHelper.getRiversMesh(rivers, this.riverDensity, this.getHexSize(), heightSeed, 
+        mountainHeightmap, elevatedHeightmap, this.map);*/
   }
 
   private Vector2 getHexRiverPoint(Hex hex, float hexSize) {
@@ -236,19 +310,22 @@ public class MeshMapController : MonoBehaviour {
 
   public void OnDrawGizmos() {
     Gizmos.color = Color.red;
-    for (int i = 0; i < this.riverPoints.Count; i++) {
-      Gizmos.DrawSphere(this.riverPoints[i], 0.01f);
-      //Gizmos.DrawSphere(this.riverPoints[i + 1], 0.01f);
-      //Gizmos.DrawLine(this.riverPoints[i], this.riverPoints[i + 1]);
+    foreach (List<Vector2> river in this.riverPoints) {
+      foreach(Vector2 riverPoint in river) {
+        Gizmos.DrawSphere(new Vector3(riverPoint.x, riverPoint.y, -1), 0.01f);
+      }
     }
-    Gizmos.color = Color.green;
-    Gizmos.DrawSphere(this.riverPoints[0], 0.01f);
-
-    Gizmos.color = Color.blue;
-    Gizmos.DrawSphere(this.riverPoints[this.riverPoints.Count - 1], 0.01f);
   }
 
   public TriangleNet.Mesh triangulateMap() {
+    PolygonCollider2D riverCollider = rivers.AddComponent<PolygonCollider2D>();
+    riverCollider.enabled = false;
+    riverCollider.pathCount = this.riverPoints.Count;
+    for (int i = 0; i < this.riverPoints.Count; i++) {
+      riverCollider.SetPath(i, RiverHelper.getRiverContour(this.riverPoints[i]).ToArray());
+    }
+    riverCollider.enabled = true;
+
     Polygon polygon = new Polygon();
 
     polygon.Add(new Vertex(left, bottom));
@@ -262,7 +339,9 @@ public class MeshMapController : MonoBehaviour {
         }
         float yDispersion = y == bottom || y == top ? 0 : polygonDensity * Random.Range(-0.3f, 0.3f);
         Hex vertexHex = map.getHex(HexMathHelper.worldToHexCoords(new Vector2(x, y + yDispersion), this.getHexSize()));
-        polygon.Add(new MapVertex(x, y + yDispersion, vertexHex));
+        if (!riverCollider.OverlapPoint(new Vector2(x, y + yDispersion))) {
+          polygon.Add(new MapVertex(x, y + yDispersion, vertexHex));
+        }
       }
       if (y == top) {
         break;
@@ -270,6 +349,13 @@ public class MeshMapController : MonoBehaviour {
       y += polygonDensity * (1 + Random.Range(-0.3f, 0.3f));
       if (y > top) {
         y = top;
+      }
+    }
+
+    foreach (List<Vector2> river in this.riverPoints) {
+      foreach (Vector2 riverPoint in river) {
+        Hex vertexHex = map.getHex(HexMathHelper.worldToHexCoords(riverPoint, this.getHexSize()));
+        polygon.Add(new MapVertex(riverPoint.x, riverPoint.y, vertexHex, true));
       }
     }
 
@@ -296,6 +382,24 @@ public class MeshMapController : MonoBehaviour {
     }
 
     return triangles;
+  }
+
+  private int[] simplestTriangles(int size) {
+    int[] triangles = new int[size];
+    for (int i = 0; i < triangles.Length; i++) {
+      triangles[i] = i;
+    }
+
+    return triangles;
+  }
+
+  private Color32[] simplestColours(Color color, int size) {
+    Color32[] colours = new Color32[size];
+    for (int i = 0; i < colours.Length; i++) {
+      colours[i] = color;
+    }
+
+    return colours;
   }
 
   public float getHexSize() {

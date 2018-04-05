@@ -48,6 +48,10 @@ public class Hex
     return false;
   }
 
+  public Vector2 getPosition() {
+    return new Vector2(this.x, this.y);
+  }
+
   public void addTag(string tag)
   {
     this.tags += " " + tag + " ";

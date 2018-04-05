@@ -3,9 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ColourHelper {
+  public static Color32 WATER_COLOUR = new Color32(0, 0, 255, 255);
   public static Color32 getHexColor(Hex hex) {
     if (hex == null || hex.biome == null) {
       return Color.blue;
+    }
+
+    if (hex.hasTag("high")) {
+      return Color.grey;
     }
 
     switch (hex.biome.name) {
