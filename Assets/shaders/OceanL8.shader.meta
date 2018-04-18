@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 360c3aa14e78f2c4fb8b5c571b80f813
+timeCreated: 1522923007
+licenseType: Free
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _Refraction: {instanceID: 0}
+  - _Reflection: {instanceID: 0}
+  - _Bump: {fileID: 2800000, guid: b53e0314365d8d04684e8328c15dd2c7, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

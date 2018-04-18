@@ -14,7 +14,7 @@ public class TerrainHelper {
   public static float getHeight(float heightSeed, Vector3 vertex, Hex hex, float hexSize, Texture2D elevatedHeightmap, Texture2D mountainHeightmap) {
     if (hex == null) {
       //water
-      return 0.2f + getTerrainCurvingHeight(vertex, heightSeed);
+      return 0.15f;// + getTerrainCurvingHeight(vertex, heightSeed);
     }
     Vector2 hexCenter = HexMathHelper.hexToWorldCoords(new Vector2(hex.x, hex.y), hexSize);
     Vector2 hexShift = hexCenter - new Vector2(vertex.x, vertex.y);
@@ -22,12 +22,12 @@ public class TerrainHelper {
 
     float terrainCurvingHeight = getTerrainCurvingHeight(vertex, heightSeed);
     if (hex.hasTag(RiverHelper.FRESH_LAKE_TAG)) {
-      if (hex.hasTag("normal")) {
-        return 0.1f;
-      }
-      if (hex.hasTag("low")) {
+      //if (hex.hasTag("normal")) {
+      //  return 0.1f;
+      //}
+      //if (hex.hasTag("low")) {
         return 0.15f;
-      }
+      //}
     }
 
     if (hex.hasTag("high")) {
@@ -54,7 +54,11 @@ public class TerrainHelper {
   }
 
   public static float getTerrainCurvingHeight(Vector2 vertex, float heightSeed) {
-    return (Mathf.PerlinNoise((heightSeed + vertex.x), (heightSeed + vertex.y)) * 0.4f) - 0.2f;
+    return (Mathf.PerlinNoise((heightSeed + vertex.x), (heightSeed + vertex.y)) * 0.3f) - 0.15f;
+  }
+
+  public static float getWaterCurvingHeight(Vector3 vertex, float heightSeed) {
+    return (Mathf.PerlinNoise((heightSeed + vertex.x), (heightSeed + vertex.y)) * 0.02f) - 0.01f;
   }
 
 }

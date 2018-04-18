@@ -14,6 +14,9 @@ public class MeshMapController : MonoBehaviour {
 
   public GameObject ocean;
   public GameObject rivers;
+  public GameObject lakes;
+
+  public GameObject treePrefab;
 
   public System.Random randomGenerator;
 
@@ -26,6 +29,8 @@ public class MeshMapController : MonoBehaviour {
   private List<int> triangles;
   private List<Color32> colours;
   private List<Vector2> uv;
+
+  private Dictionary<Vector2, float> mapVerticesHeights = new Dictionary<Vector2, float>();
 
   private int minX;
   private int maxX;
@@ -125,6 +130,7 @@ public class MeshMapController : MonoBehaviour {
 
     List<Vector3> oceanVertices = new List<Vector3>();
     List<Vector3> riverVertices = new List<Vector3>();
+    List<Vector3> lakeVertices = new List<Vector3>();
 
     calculateMapBounds();
 
@@ -146,6 +152,10 @@ public class MeshMapController : MonoBehaviour {
       Vector3 underwaterShift2 = new Vector3(0, 0);
       Vector3 underwaterShift3 = new Vector3(0, 0);
 
+      bool needsShoreAdjustment1 = false;
+      bool needsShoreAdjustment2 = false;
+      bool needsShoreAdjustment3 = false;
+
       Color resultTriangleColor = ColourHelper.WATER_COLOUR;
 
       if (triangleColor == triangleColor2 && triangleColor == triangleColor3) {
@@ -153,6 +163,15 @@ public class MeshMapController : MonoBehaviour {
       } else if (ColourHelper.isWaterColor(triangleColor) || ColourHelper.isWaterColor(triangleColor2) || ColourHelper.isWaterColor(triangleColor3)) {
         if (vertex1.hex == null || vertex2.hex == null || vertex3.hex == null) {
           resultTriangleColor = Color.yellow;
+          if (vertex1.hex != null) {
+            needsShoreAdjustment1 = true;
+          }
+          if (vertex2.hex != null) {
+            needsShoreAdjustment2 = true;
+          }
+          if (vertex3.hex != null) {
+            needsShoreAdjustment3 = true;
+          }
         } else {
           resultTriangleColor = new Color32(70, 100, 0, 255);
         }
@@ -163,14 +182,17 @@ public class MeshMapController : MonoBehaviour {
         //if shore triangle push it underwater to create shore slope
         if (vertex1.hex == null) {
           underwaterShift1 = (new Vector2((float)vertex1.x, (float)vertex1.y) - shoreCenter).normalized * 0.3f;
+          underwaterShift1 += new Vector3(0, 0, 0.03f);
           shoreIndices.Add(vertexIndex);
         }
         if (vertex2.hex == null) {
           underwaterShift2 = (new Vector2((float)vertex2.x, (float)vertex2.y) - shoreCenter).normalized * 0.3f;
+          underwaterShift2 += new Vector3(0, 0, 0.03f);
           shoreIndices.Add(vertexIndex + 1);
         }
         if (vertex3.hex == null) {
           underwaterShift3 = (new Vector2((float)vertex3.x, (float)vertex3.y) - shoreCenter).normalized * 0.3f;
+          underwaterShift3 += new Vector3(0, 0, 0.03f);
           shoreIndices.Add(vertexIndex + 2);
         }
 
@@ -208,6 +230,21 @@ public class MeshMapController : MonoBehaviour {
       Vector3 newVertex2 = vertex2.toVector3() + underwaterShift2 + new Vector3(0, 0, height2);
       Vector3 newVertex3 = vertex3.toVector3() + underwaterShift3 + new Vector3(0, 0, height3);
 
+      if(!this.mapVerticesHeights.ContainsKey(newVertex1) && needsShoreAdjustment1) {
+        newVertex1.z = Random.Range(0.08f, 0.13f);
+        this.mapVerticesHeights[newVertex1] = newVertex1.z;
+      }
+
+      if (!this.mapVerticesHeights.ContainsKey(newVertex2) && needsShoreAdjustment2) {
+        newVertex2.z = Random.Range(0.08f, 0.13f);
+        this.mapVerticesHeights[newVertex2] = newVertex2.z;
+      }
+
+      if (!this.mapVerticesHeights.ContainsKey(newVertex3) && needsShoreAdjustment3) {
+        newVertex3.z = Random.Range(0.08f, 0.13f);
+        this.mapVerticesHeights[newVertex3] = newVertex3.z;
+      }
+
       if (vertex1.isRiver && (vertex1.hex == null || !vertex1.hex.hasTag(RiverHelper.FRESH_LAKE_TAG))) {
         newVertex1 += TerrainHelper.getRiverHeightAdjustment(newVertex1);
       }
@@ -225,9 +262,18 @@ public class MeshMapController : MonoBehaviour {
         oceanVertices.Add(newVertex2);
         oceanVertices.Add(newVertex3);
       } else if (vertex1.isRiver && vertex2.isRiver && vertex3.isRiver) {
-        riverVertices.Add(newVertex1);
-        riverVertices.Add(newVertex2);
-        riverVertices.Add(newVertex3);
+        //riverVertices.Add(newVertex1);
+        //riverVertices.Add(newVertex2);
+        //riverVertices.Add(newVertex3);
+        lakeVertices.Add(newVertex1);
+        lakeVertices.Add(newVertex2);
+        lakeVertices.Add(newVertex3);
+      } else if (vertex1.hex != null && vertex1.hex.hasTag(RiverHelper.FRESH_LAKE_TAG) 
+        && vertex2.hex != null && vertex2.hex.hasTag(RiverHelper.FRESH_LAKE_TAG)
+        && vertex3.hex != null && vertex3.hex.hasTag(RiverHelper.FRESH_LAKE_TAG)) {
+        lakeVertices.Add(newVertex1);
+        lakeVertices.Add(newVertex2);
+        lakeVertices.Add(newVertex3);
       } else {
         this.vertices.Add(newVertex1);
         this.vertices.Add(newVertex2);
@@ -256,6 +302,22 @@ public class MeshMapController : MonoBehaviour {
       this.createRiverMesh(riverVertices);
     }
 
+    if (lakeVertices.Count > 0) {
+      this.createLakesMesh(lakeVertices);
+    }
+
+    generateTrees(heightSeed);
+
+
+    //smooth shore
+    for (int i = 0; i < this.vertices.Count; i++) {
+      Vector3 vertex = this.vertices[i];
+      if (this.mapVerticesHeights.ContainsKey(vertex)) {
+        vertex.z = this.mapVerticesHeights[vertices[i]];
+        this.vertices[i] = vertex;
+      }
+    }
+
 
     GetComponent<MeshFilter>().mesh = mesh = new UnityEngine.Mesh();
     mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
@@ -279,6 +341,46 @@ public class MeshMapController : MonoBehaviour {
     riverMesh.RecalculateBounds();
 
     rivers.GetComponent<MeshFilter>().mesh = riverMesh;
+  }
+
+  public void generateTrees(float heightSeed) {
+    foreach (Hex hex in this.map.hexes) {
+      if (hex != null && hex.biome != null && hex.biome.name == "Grassland") {
+        int forestThreshold = 30;
+        int randomChance = Random.Range(0, 100);
+        if(randomChance < forestThreshold) {
+          int numberOfTrees = Random.Range(15, 30);
+          for (int treeIndex = 0; treeIndex < numberOfTrees; treeIndex++) {
+            spawnTree(hex, heightSeed);
+          }
+        }
+      }
+    }
+  }
+
+  public void spawnTree(Hex hex, float heightSeed) {
+    GameObject newTree = Instantiate(treePrefab);
+    Vector2 treePosition = Random.insideUnitCircle * this.getHexSize();
+    treePosition += HexMathHelper.hexToWorldCoords(hex.getPosition(), this.getHexSize());
+    float spawnHeight = TerrainHelper.getHeight(heightSeed, treePosition, hex, this.getHexSize(), elevatedHeightmap, mountainHeightmap);
+    float yScale = Random.Range(0.05f, 0.08f);
+    Vector3 newScale = newTree.transform.localScale;
+    newScale.y = yScale;
+    newTree.transform.localScale = newScale;
+    newTree.transform.position = new Vector3(treePosition.x, treePosition.y, spawnHeight - 0.12f);
+  }
+
+  public void createLakesMesh(List<Vector3> vertices) {
+    UnityEngine.Mesh lakesMesh = new UnityEngine.Mesh();
+    lakesMesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
+    lakesMesh.name = "Lakes";
+    lakesMesh.vertices = vertices.ToArray();
+    lakesMesh.triangles = simplestTriangles(vertices.Count);
+    lakesMesh.colors32 = simplestColours(ColourHelper.WATER_COLOUR, vertices.Count);
+    lakesMesh.RecalculateNormals();
+    lakesMesh.RecalculateBounds();
+
+    lakes.GetComponent<MeshFilter>().mesh = lakesMesh;
   }
 
   public void createOceanMesh(List<Vector3> vertices) {
