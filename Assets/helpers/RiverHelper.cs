@@ -14,7 +14,7 @@ public class RiverHelper {
   public static string WATER_ADJACENT_TAG = CriticalResource.WATER.adjacentHexName;
 
 
-  public static List<List<Vector2>> generateRivers(Map map, Vector2 mapCenter) {
+  public static List<List<Vector2>> generateRivers(Map map) {
     List<List<Vector2>> rivers = new List<List<Vector2>>();
 
     List<Hex> riverOrigins = new List<Hex>();
