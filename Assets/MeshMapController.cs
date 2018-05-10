@@ -65,6 +65,7 @@ public class MeshMapController : MonoBehaviour {
       riverDensity, heightSeed, elevatedHeightmap, mountainHeightmap, rivers);
     MapMesh mapMesh = meshGenerator.generateMapMesh();
     this.GetComponent<MeshFilter>().mesh = mesh = mapMesh.landMesh;
+    this.GetComponent<MeshCollider>().sharedMesh = this.GetComponent<MeshFilter>().mesh;
     this.lakes.GetComponent<MeshFilter>().mesh = mapMesh.innerWaterMesh;
     this.ocean.GetComponent<MeshFilter>().mesh = mapMesh.oceanMesh;
 

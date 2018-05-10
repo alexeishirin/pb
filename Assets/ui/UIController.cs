@@ -16,6 +16,7 @@ public class UIController : MonoBehaviour, IPointerClickHandler {
 
   public HexHighlightController hexHighlightController;
   public Camera mainCamera;
+  public Camera characterCamera;
 
   public Vector2 highightedHex;
 
@@ -25,13 +26,27 @@ public class UIController : MonoBehaviour, IPointerClickHandler {
 
 	// Use this for initialization
 	void Start () {
-		
+    this.mainCamera.enabled = true;
+    this.characterCamera.enabled = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
     this.showHexInfo();
     this.highlightTile();
+    this.switchCameras();
+  }
+
+  public void switchCameras() {
+    if(Input.GetKeyUp(KeyCode.Tab)) {
+      if(this.mainCamera.enabled) {
+        this.mainCamera.enabled = false;
+        this.characterCamera.enabled = true;     
+      } else {
+        this.mainCamera.enabled = true;
+        this.characterCamera.enabled = false;
+      }
+    }
   }
 
   public void updateTimePanel(int newTime, int dayLength, int nightLength)

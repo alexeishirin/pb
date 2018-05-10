@@ -30,6 +30,7 @@ public class GameStateManager : MonoBehaviour {
   public void generateWorld()
   {
     Debug.Log("generating world");
+    Physics.gravity = new Vector3(0, 0, 1f);
     this.mapGenerationSettings = MapGenerationSettings.loadSettings(applicationPersistentPath);
     this.mapData = MapData.loadData(applicationPersistentPath);
     UIController.getInstance().updateSettingsPanel(this.mapGenerationSettings, 0);
