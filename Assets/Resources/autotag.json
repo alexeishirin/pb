@@ -1,0 +1,34 @@
+[{
+"low":"rock",
+"normal":"rock",
+"elevated":"rock boulder highpoint",
+"high":"rock boulder veryhighpoint",
+"alpineveg":"shortgrass",
+"bogveg":"shortgrass medgrass moss bush peat",
+"desertveg":"grasspatch",
+"freshwaterveg":"",
+"grassveg":"shortgrass medgrass",
+"marshveg":"shortgrass medgrass moss bush",
+"saltwaterveg":"",
+"savannaveg":"shortgrass bush",
+"scrubveg":"bush",
+"rainforestveg":"climbvhp",
+"thornveg":"thornbush",
+"tundraveg":"shortgrass moss",
+"brokenterrain":"boulder",
+"forest":"tree climbhp"
+}
+]
+
+
+
+
+
+
+
+
+
+
+
+
+

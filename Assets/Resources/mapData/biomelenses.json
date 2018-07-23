@@ -1,498 +1,313 @@
+[{
+"name":"Alpine glacier",
+"active":1,
+"parent": "Alpine barren",
+"caption": "Alpine glacier",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "",
+"tags": "ice glacier brokenterrain alpineglacier",
+"deltags": "",
+"overlayobj": ""
+},
 {
-  "items": [
-    {
-      "name": "Alpine glacier",
-      "active": true,
-      "parent": "Alpine barren",
-      "caption": "Alpine glacier",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Volcano",
-      "active": true,
-      "parent": "Alpine barren",
-      "caption": "Volcano",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Ice desert",
-      "active": true,
-      "parent": "Cold desert",
-      "caption": "Ice desert",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "frozen",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Cold swamp",
-      "active": true,
-      "parent": "Moss bog",
-      "caption": "Cold swamp",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Temperate forest",
-      "active": true,
-      "parent": "Grassland",
-      "caption": "Temperate forest",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Temperate rainforest",
-      "active": true,
-      "parent": "Grassland",
-      "caption": "Temperate rainforest",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Grass sea",
-      "active": true,
-      "parent": "Grassland",
-      "caption": "Grass sea",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Salt flat",
-      "active": true,
-      "parent": "Hot desert",
-      "caption": "Salt flat",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Oasis",
-      "active": true,
-      "parent": "Hot desert",
-      "caption": "Oasis",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "CR",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Badlands",
-      "active": true,
-      "parent": "Hot desert",
-      "caption": "Badlands",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "elevated",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Rock desert",
-      "active": true,
-      "parent": "Hot desert",
-      "caption": "Rock desert",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Soda lake",
-      "active": true,
-      "parent": "Salt lake",
-      "caption": "Soda lake",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "hot",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Savanna woodland",
-      "active": true,
-      "parent": "Savanna grassland",
-      "caption": "Savanna woodland",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Sand forest",
-      "active": true,
-      "parent": "Savanna grassland",
-      "caption": "Sand forest",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Dry forest",
-      "active": true,
-      "parent": "Savanna grassland",
-      "caption": "Dry forest",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Swamp",
-      "active": true,
-      "parent": "Marsh",
-      "caption": "Swamp",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Thornscrub",
-      "active": true,
-      "parent": "Scrubland",
-      "caption": "Thornscrub",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Swamped jungle",
-      "active": true,
-      "parent": "Tropical rainforest",
-      "caption": "Swamped jungle",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "low",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Cloud forest",
-      "active": true,
-      "parent": "Tropical rainforest",
-      "caption": "Cloud forest",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "high",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Glacier tundra",
-      "active": true,
-      "parent": "Tundra",
-      "caption": "Glacier tundra",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "cold",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Snow forest",
-      "active": true,
-      "parent": "Tundra",
-      "caption": "Snow forest",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Cold shrubland",
-      "active": true,
-      "parent": "Tundra",
-      "caption": "Cold shrubland",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Alpine tundra",
-      "active": true,
-      "parent": "Tundra",
-      "caption": "Alpine tundra",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "high",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Hot springs",
-      "active": true,
-      "parent": "Volcanic desert ",
-      "caption": "Hot springs",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Lava field",
-      "active": true,
-      "parent": "Volcanic desert ",
-      "caption": "Lava field",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    },
-    {
-      "name": "Mud volcanoes",
-      "active": true,
-      "parent": "Volcanic desert ",
-      "caption": "Mud volcanoes",
-      "descriptions": [
-        "",
-        ""
-      ],
-      "actionDescriptions": [
-        "",
-        ""
-      ],
-      "weightTags": "",
-      "lensTags": "",
-      "tagsToDelete": "",
-      "poi": "",
-      "overlayObjects": ""
-    }
-  ]
+"name":"Volcano",
+"active":1,
+"parent": "Alpine barren",
+"caption": "Volcano",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "",
+"tags": "volcano",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Ice desert",
+"active":1,
+"parent": "Cold desert",
+"caption": "Ice desert",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "frozen",
+"tags": "ice deepsnow",
+"deltags": "sand tundraveg icedesert",
+"overlayobj": ""
+},
+{
+"name":"Cold swamp",
+"active":1,
+"parent": "Moss bog",
+"caption": "Cold swamp",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "",
+"tags": "forest sparseveg coldswamp",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Temperate forest",
+"active":1,
+"parent": "Grassland",
+"caption": "Temperate forest",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "",
+"tags": "forest denseveg temperateforest",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Temperate rainforest",
+"active":1,
+"parent": "Grassland",
+"caption": "Temperate rainforest",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "",
+"tags": "forest moist denseveg temperaterainforest",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Grass sea",
+"active":1,
+"parent": "Grassland",
+"caption": "Grass sea",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "",
+"tags": "tallgrass grasssea",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Salt flat",
+"active":1,
+"parent": "Hot desert",
+"caption": "Salt flat",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "normal",
+"tags": "salt",
+"deltags": "sand desertveg saltflat",
+"overlayobj": ""
+},
+{
+"name":"Oasis",
+"active":1,
+"parent": "Hot desert",
+"caption": "Oasis",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "CR",
+"tags": "savannaveg forest sparseveg water oasis",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Badlands",
+"active":1,
+"parent": "Hot desert",
+"caption": "Badlands",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "elevated",
+"tags": "dirt brokenterrain badlands",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Rock desert",
+"active":1,
+"parent": "Hot desert",
+"caption": "Rock desert",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "",
+"tags": "rubble rockdesert",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Soda lake",
+"active":1,
+"parent": "Salt lake",
+"caption": "Soda lake",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "hot",
+"tags": "poisonedwater sodalake",
+"deltags": "saltwaterveg",
+"overlayobj": ""
+},
+{
+"name":"Savanna woodland",
+"active":1,
+"parent": "Savanna grassland",
+"caption": "",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "",
+"tags": "forest sparseveg savannawoodland",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Sand forest",
+"active":1,
+"parent": "Savanna grassland",
+"caption": "",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "",
+"tags": "sand forest denseveg sandforest",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Dry forest",
+"active":1,
+"parent": "Savanna grassland",
+"caption": "",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "",
+"tags": "dirt forest denseveg dryforest",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Swamp",
+"active":1,
+"parent": "Marsh",
+"caption": "Swamp",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "",
+"tags": "forest sparseveg swamp",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Thornscrub",
+"active":1,
+"parent": "Scrubland",
+"caption": "Thornscrub",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "",
+"tags": "denseveg thornveg thornscrub",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Swamped jungle",
+"active":1,
+"parent": "Tropical rainforest",
+"caption": "Swamped jungle",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "low",
+"tags": "swamp water swampedjungle",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Cloud forest",
+"active":1,
+"parent": "Tropical rainforest",
+"caption": "Cloud forest",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "high",
+"tags": "diverseFF cloudforest",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Glacier tundra",
+"active":1,
+"parent": "Tundra",
+"caption": "Glacier tundra",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "cold",
+"tags": "ice glacier brokenterrain glaciertundra",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Snow forest",
+"active":1,
+"parent": "Tundra",
+"caption": "Snow forest",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "",
+"tags": "forest denseveg snowforest",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Cold shrubland",
+"active":1,
+"parent": "Tundra",
+"caption": "Cold shrubland",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "",
+"tags": "shrubveg sparseveg coldshrubland",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Alpine tundra",
+"active":1,
+"parent": "Tundra",
+"caption": "Alpine tundra",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "high",
+"tags": "alpinetundra",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Hot springs",
+"active":1,
+"parent": "Volcanic desert ",
+"caption": "Hot springs",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "low",
+"tags": "water hotspring",
+"deltags": "",
+"overlayobj": ""
+},
+{
+"name":"Lava field",
+"active":1,
+"parent": "Volcanic desert ",
+"caption": "Lava field",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "",
+"tags": "brokenterrain stone lavafield",
+"deltags": "sand",
+"overlayobj": ""
+},
+{
+"name":"Mud volcanoes",
+"active":1,
+"parent": "Volcanic desert ",
+"caption": "Mud volcanoes",
+"descr": ["",""],
+"actiondescr": ["",""],
+"weighttags": "low",
+"tags": "mud mudvolcanoe",
+"deltags": "",
+"overlayobj": ""
 }
+]
